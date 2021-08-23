@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>回调函数形式的ref</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <!-- 引入核心库 -->
+    <script src="../js/react.development.js"></script>
+    <!-- 引入react-dom，用于支持react操作DOM -->
+    <script src="../js/react-dom.development.js"></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+      // 创建组件
+      class Demo extends React.Component {
+        /*
+          React.createRef调用后可以返回一个容器，该容器可以存储被ref所标识的节点，该容器的“专人专用”的
+          每写用一个ref，都需要调用一次createRef方法
+        */
+        myRef = React.createRef();
+        myRef2 = React.createRef();
+
+        showLeftData = () => {
+          console.log(this);
+          alert(this.myRef.current.value);
+        };
+
+        showRightData = () => {
+          alert(this.myRef2.current.value);
+        };
+
+        render() {
+          return (
+            <div>
+              <input ref={this.myRef} type="text" placeholder="点击按钮提示数据" />
+              &nbsp;
+              <button onClick={this.showLeftData}>点我提示左侧输入信息</button>&nbsp;
+              <input ref={this.myRef2} onBlur={this.showRightData} type="text" placeholder="失去焦点提示数据" />
+            </div>
+          );
+        }
+      }
+      // 渲染组件到页面
+      ReactDOM.render(<Demo />, document.getElementById('test'));
+    </script>
+  </body>
+</html>

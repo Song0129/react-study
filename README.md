@@ -36,7 +36,6 @@ React 学习过程中的一些笔记和小案例
 ```
 // 1.创建虚拟DOM
 const VDOM = <h1>Hello,React</h1>; /*此处一定不要写引号 是虚拟dom不是字符串*/
-
 // 2.渲染虚拟DOM到页面
 ReactDOM.render(VDOM, document.getElementById("test"));
 ```
@@ -74,7 +73,6 @@ ReactDOM.render(VDOM, document.getElementById("test"));
 -   标签首字母
 
     1. 若小写字母开头，则将该标签转为 html 中同名元素，若 html 无该标签对应的同名元素，则报错
-
     2. 若大写字母开头，react 就去渲染对应的组件，若组件没有定义，则报错
 
 -   babel.js 的作用
@@ -391,9 +389,8 @@ ReactDOM.render(VDOM, document.getElementById("test"));
 
         1. 旧虚拟 DOM 中找到了与新虚拟 DOM 相同的 key：
 
-            (1).若虚拟 DOM 中内容没变, 直接使用之前的真实 DOM
-
-            (2).若虚拟 DOM 中内容变了, 则生成新的真实 DOM，随后替换掉页面中之前的真实 DOM
+            (1).若虚拟 DOM 中内容没变, 直接使用之前的真实 DOM  
+             (2).若虚拟 DOM 中内容变了, 则生成新的真实 DOM，随后替换掉页面中之前的真实 DOM
 
         2. 旧虚拟 DOM 中未找到与新虚拟 DOM 相同的 key
            根据数据创建新的真实 DOM，随后渲染到到页面
@@ -402,10 +399,8 @@ ReactDOM.render(VDOM, document.getElementById("test"));
 
     1. 若对数据进行：逆序添加、逆序删除等破坏顺序操作:
        会产生没有必要的真实 DOM 更新 ==> 界面效果没问题, 但效率低。
-
     2. 如果结构中还包含输入类的 DOM：
        会产生错误 DOM 更新 ==> 界面有问题。
-
     3. 注意！如果不存在对数据的逆序添加、逆序删除等破坏顺序操作，
        仅用于渲染列表用于展示，使用 index 作为 key 是没有问题的。
 
@@ -452,6 +447,156 @@ ReactDOM.render(VDOM, document.getElementById("test"));
 
     React脚手架create-react-app的使用
 
+1.  React 脚手架介绍及初次使用等
+
+    -   react 脚手架
+
+        1. xxx 脚手架: 用来帮助程序员快速创建一个基于 xxx 库的模板项目
+            1. 包含了所有需要的配置（语法检查、jsx 编译、devServer…）
+            2. 下载好了所有相关的依赖
+            3. 可以直接运行一个简单效果
+        2. react 提供了一个用于创建 react 项目的脚手架库: create-react-app
+        3. 项目的整体技术架构为: react + webpack + es6 + eslint
+        4. 使用脚手架开发的项目的特点: 模块化, 组件化, 工程化
+
+    -   创建项目并启动
+
+        1. 全局安装：`npm i -g create-react-app`
+        2. 切换到想创项目的目录，使用命令：`create-react-app hello-react`
+        3. 进入项目文件夹：`cd hello-react`
+        4. 启动项目：`npm start`
+
+    -   react 脚手架项目结构
+
+    -   public ---- 静态资源文件夹
+
+        favicon.icon ------ 网站页签图标  
+        index.html -------- 主页面  
+        logo192.png ------- logo 图  
+        logo512.png ------- logo 图  
+        manifest.json ----- 应用加壳的配置文件  
+        robots.txt -------- 爬虫协议文件
+
+    -   src ---- 源码文件夹
+
+        App.css -------- App 组件的样式  
+        App.js --------- App 组件  
+        App.test.js ---- 用于给 App 做测试  
+        index.css ------ 样式  
+        index.js ------- 入口文件  
+        logo.svg ------- logo 图  
+        reportWebVitals.js --- 页面性能分析文件(需要 web-vitals 库的支持)  
+        setupTests.js ---- 组件单元测试的文件(需要 jest-dom 库的支持)
+
+    -   功能界面的组件化编码流程（通用）
+
+        1. 拆分组件: 拆分界面,抽取组件
+        2. 实现静态组件: 使用组件实现静态页面效果
+        3. 实现动态组件
+            1. 动态显示初始化数据
+                1. 数据类型
+                2. 数据名称
+                3. 保存在哪个组件?
+            2. 交互(从绑定事件监听开始)
+
+2.  TodoList 案例
+
+    1. 拆分组件、实现静态组件，注意：className、style 的写法
+    2. 动态初始化列表，如何确定将数据放在哪个组件的 state 中？  
+       ——某个组件使用：放在其自身的 state 中  
+       ——某些组件使用：放在他们共同的父组件 state 中（官方称此操作为：状态提升）
+    3. 关于父子之间通信：
+        1. 【父组件】给【子组件】传递数据：通过 props 传递
+        2. 【子组件】给【父组件】传递数据：通过 props 传递，要求父提前给子传递一个函数
+    4. 注意 defaultChecked 和 checked 的区别，类似的还有：defaultValue 和 value
+       defaultChecked 只执行一次  
+       checked 必须有 onChange 函数
+    5. 状态在哪里，操作状态的方法就在哪里
+
+3.  React 脚手架中配置代理
+
+    只需在项目初始创建的时候去配置，即初始架构阶段就可配置好，后面几乎不动！
+
+    注：新版本可能会报错 proxy is not a function [解决](https://blog.csdn.net/weixin_44656392/article/details/107702232 "j解决新版proxy报错问题")!
+
+    -   src 文件夹下创建 setupProxy.js
+
+        ```
+        // 此方法可配置多个代理
+        const proxy = require("http-proxy-middleware");
+
+        module.exports = function (app) {
+            app.use(
+                proxy("/api1", {
+                    //遇见/api1前缀的请求，就会触发该代理配置
+                    target: "http://localhost:5000", //请求转发给谁
+                    changeOrigin: true, //控制服务器收到的请求头中Host的值
+                    pathRewrite: { "^/api1": "" }, //重写请求路径(必须)
+                }),
+                proxy("/api2", {
+                    target: "http://localhost:5001",
+                    changeOrigin: true,
+                    pathRewrite: { "^/api2": "" },
+                })
+            );
+        };
+        ```
+
+    -   package.json 中配置
+
+        在 package.json 最后新增`proxy: "http://localhost:5000"`即可
+        缺点：只能配置一个代理
+
+4.  github 搜索案例
+
+    -   axios
+
+    -   pubsub
+
+    -   fetch
+
+5.  React 脚手架中路由的使用
+
+6.  NavLink 相关内容
+
+7.  switch 的使用
+
+8.  React 脚手架中解决样式丢失问题
+
+9.  路由精准匹配和模糊匹配
+
+10. 路由中 Redirect 的使用
+
+11. 嵌套路由的使用
+
+12. 路由组件传参方式
+
+    -   params 参数
+
+    -   search 参数
+
+    -   state 参数
+
+13. push 和 replace 模式
+
+14. 编程式路由导航
+
+15. withRouter 的使用
+
+16. HashRouter 和 BrowserRouter
+
+17. ant-design 的使用
+
+    -   基本使用
+
+    -   按需加载 antd 组件
+
+    -   自定义 antd 主题
+
 ## 四.Redux_test
 
     React中状态管理工具Redux的使用
+
+```
+
+```

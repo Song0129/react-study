@@ -565,6 +565,21 @@ ReactDOM.render(VDOM, document.getElementById("test"));
 
 -   axios
 
+    ```
+    axios.get(`/api1/search/users?q=${keyWord}`).then(
+        (respone) => {
+            // 请求成功后通知App更新状态
+            console.log("success", respone.data);
+            this.props.updateAppState({ isLoading: false, users: respone.data.items });
+        },
+        (error) => {
+            // 请求失败后通知App更新状态
+            console.log("error", error);
+            this.props.updateAppState({ isLoading: false, err: error.message });
+        }
+    );
+    ```
+
 -   pubsub
 
     需要引入`pubsub-js`，使用方法
@@ -695,7 +710,7 @@ ReactDOM.render(VDOM, document.getElementById("test"));
 
 ### 11. 路由组件传参方式
 
--   params 参数
+-   params 参数（较常用）
 
     1. 路径声明-->传参
 
@@ -745,7 +760,7 @@ ReactDOM.render(VDOM, document.getElementById("test"));
     const { id, title } = qs.parse(search.slice(1));
     ```
 
--   state 参数
+-   state 参数（参数在地址栏中不可见）
 
     1. 路径声明-->传参
 
@@ -771,7 +786,7 @@ ReactDOM.render(VDOM, document.getElementById("test"));
 
 ### 12. push 和 replace 模式
 
-    路由属于堆栈存储，页面跳转都类似压栈的操作。
+    路由跳转可以理解为堆栈操作，页面前进跳转类似压栈的操作。
 
 -   push
 
@@ -863,9 +878,68 @@ ReactDOM.render(VDOM, document.getElementById("test"));
 
 -   基本使用
 
--   按需加载 antd 组件
+    [antd 文档](https://ant.design/components/overview-cn/ "antd文档")
 
--   自定义 antd 主题
+    ```
+    // 引入组件
+    import { Button, DatePicker, Space } from "antd";
+    const { RangePicker } = DatePicker;
+    <Button type="primary">Primary Button</Button>
+    <Space direction="vertical">
+        <DatePicker onChange={this.onChange} />
+        <DatePicker onChange={this.onChange} picker="week" />
+        <DatePicker onChange={this.onChange} picker="month" />
+        <DatePicker onChange={this.onChange} picker="quarter" />
+        <DatePicker onChange={this.onChange} picker="year" />
+    </Space>
+    <RangePicker />
+
+    // 注：部分组件需要二次解构引入
+    ```
+
+-   按需加载 antd 组件 + 自定义 antd 主题
+
+1. 安装依赖
+
+    ```
+    yarn add react-app-rewired customize-cra babel-plugin-import less less-loader
+    ```
+
+    less-loader 版本不宜过高，版本过高报错**TypeError: this.getOptions is not a function**  
+    解决方式：降低 less-loader 版本即可，自测 7.0.1 可用
+
+2. 修改 package.json
+
+    ```
+    "scripts": {
+        "start": "react-app-rewired start",
+        "build": "react-app-rewired build",
+        "test": "react-app-rewired test",
+        "eject": "react-scripts eject"
+    },
+    ```
+
+3. 根目录下创建 config-overrides.js
+
+    ```
+    //配置具体的修改规则
+    const { override, fixBabelImports,addLessLoader} = require('customize-cra');
+    module.exports = override(
+        fixBabelImports('import', {
+            libraryName: 'antd',
+            libraryDirectory: 'es',
+            style: true,
+        }),
+        addLessLoader({
+            lessOptions:{
+                javascriptEnabled: true,
+                modifyVars: { '@primary-color': 'green' },
+            }
+        }),
+    );
+    ```
+
+4. 备注：不用在组件里亲自引入样式了，即：import 'antd/dist/antd.css'应该删掉
 
 ## 四.Redux_test
 

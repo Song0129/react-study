@@ -7,7 +7,7 @@ React 学习过程中的一些笔记和小案例
 ## 一.React_Basic
 
     React中基本知识点小案例
-    此处案例均采用引入关键js的方式显示(16版本)
+    此处案例均采用引入关键js的方式显示(react 16.8.4版本,新生命周期为17.0.1版本)
 
     react.development.js==>用于引入React核心库
     react-dom-development.js==>用于支持React操作DOM
@@ -338,6 +338,8 @@ ReactDOM.render(VDOM, document.getElementById("test"));
 ![组件的生命周期(新).png](<https://gitee.com/song0129/react-study/raw/main/picture/react%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F(%E6%96%B0).png> "组件的生命周期(新)")
 
 -   生命周期的三个阶段(新)
+
+    注：此处案例使用 17.0.1 版本的 React
 
     1. 初始化阶段：由 ReactDOM.render()触发---初次渲染
         1. constructor() 构造器触发

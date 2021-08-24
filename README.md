@@ -442,14 +442,6 @@ ReactDOM.render(VDOM, document.getElementById("test"));
     </script>
     ```
 
-3. 类方法中的 this 指向
-
-4. 展开运算符
-
-5. 对象相关的知识
-
-6. 演示函数的柯里化
-
 ## 二.React_Extension
 
     React扩展知识点

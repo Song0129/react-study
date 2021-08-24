@@ -220,6 +220,55 @@ constructor(props){
 
 ### 7.组件的三大属性 3——refs
 
+1. 理解
+
+    组件内的标签可以定义 ref 属性来标识自己
+
+2. 编码
+
+-   字符串形式的 ref
+
+```
+<input ref="input1"/>
+// 可通过以下方式获取到当前ref为input1的DOM元素
+// 可理解为所有的ref节点都存于this.refs中
+this.refs.input1
+```
+
+-   回调形式的 ref
+
+```
+<input ref={(c)=>{this.input1 = c}}/>
+// 在组件内方法中，可通过以下方式获取DOM元素
+// 可理解为在当前组件类中增加属性input1，即可通过this直接获取
+this.input1
+
+/*
+    回调函数形式的ref：
+    更新过程中，回调函数会执行两次
+    第一次：传入的参数为null
+    第二次：传入的参数为真实DOM元素
+    原因：每次渲染时会创建一个新的函数实例，所以React清空旧的ref并设置新的ref
+    解决：将ref的回调函数定义为class的绑定函数的方式可避免上述问题，但大多数情况下都无关紧要
+*/
+```
+
+-   createRef 创建 ref 容器（新版本推荐）
+
+```
+// 创建容器
+myRef = React.createRef()
+// 使用ref标识节点
+<input ref={this.myRef}/>
+// 组件方法内，可通过一下方式获取DOM远古三
+this.myRef
+
+/*
+    React.createRef调用后可以返回一个容器，该容器可以存储被ref所标识的节点，该容器的“专人专用”的
+    每写用一个ref，都需要调用一次createRef方法
+*/
+```
+
 ### 8.React 中的事件处理
 
 ### 9.react 中收集表单数据

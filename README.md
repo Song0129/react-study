@@ -369,6 +369,8 @@ ReactDOM.render(VDOM, document.getElementById("test"));
 
 -   基本原理图
 
+![diff流程图.png](https://gitee.com/song0129/react-study/raw/main/picture/diff%E6%B5%81%E7%A8%8B.png "diff流程图")
+
 -   经典面试题
 
 1.  react/vue 中的 key 有什么作用？（key 的内部原理是什么？）

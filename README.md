@@ -53,7 +53,7 @@ const VDOM = (
 )
 ```
 
--   使用 js 创建虚拟 DOM
+-   使用 js 创建虚拟 DOM（一般不常用）
 
 ```
 const VDOM = React.createElement("h1", { id: "title" }, React.createElement("span", {}, "hello,react"));
@@ -67,23 +67,156 @@ jsx 语法规则：
 -   标签中混入 js 表达式时要用{}
 -   样式的类型指定不要用 class，要用 className
 -   内联样式，要用 style={{key:value}}的形式去写
-    外层括号表示是 js 表达式，内层表示为 js 对象，键值对形式声明样式
 
-    多个单词组成的样式 应该使用小驼峰命名如 font-size=》fontSize
+1. 外层括号表示是 js 表达式，内层表示为 js 对象，键值对形式声明样式
+2. 多个单词组成的样式 应该使用小驼峰命名如 font-size=》fontSize
 
 -   只有一个根标签=》类似 vue 组件
 -   标签必须闭合
 -   标签首字母
 
-    (1).若小写字母开头，则将该标签转为 html 中同名元素，若 html 无该标签对应的同名元素，则报错
+1. 若小写字母开头，则将该标签转为 html 中同名元素，若 html 无该标签对应的同名元素，则报错
 
-    (2).若大写字母开头，react 就去渲染对应的组件，若组件没有定义，则报错
+2. 若大写字母开头，react 就去渲染对应的组件，若组件没有定义，则报错
+
+-   babel.js 的作用
+
+1. 浏览器不能直接解析 JSX 代码, 需要 babel 转译为纯 JS 的代码才能运行
+2. 只要用了 JSX，都要加上 type="text/babel", 声明需要 babel 来处理
 
 ### 4.React 中的组件
 
+-   函数式组件
+
+```
+function MyComponent() {
+    console.log(this); //此处的this是undefined,因为babel编译后开启了严格模式
+    return <h2>我是用函数定义的组件(使用于[简单组件]的定义)</h2>;
+}
+
+/*
+    执行了ReactDOM.render(<MyComponent/>)......之后,发生了什么?
+    1.React解析组件标签，找到了MyComponent组件。
+    2.发现组件是使用函数定义的，随后调用该函数，将返回的虚拟DOM转为真实DOM，随后呈现在页面中。
+*/
+```
+
+-   类式组件
+
+```
+class MyComponent extends React.Component {
+    render() {
+        // render是放在哪里的？---MyComponent的原型对象上,供实例使用。
+        // render中的this是谁？---MyComponent的实例对象<=>MyComponent组件实例对象。
+        return <h2>我是用类定义的组件(使用于[复杂组件]的定义)</h2>;
+    }
+}
+
+/*
+    执行了ReactDOM.render(<MyComponent/>)......之后,发生了什么?
+    1.React解析组件标签，找到了MyComponent组件。
+    2.发现组件是使用类定义的，随后new出来该类的实例，并通过该实例调用到原型上的render方法。
+    3.将render返回的虚拟DOM转为真实DOM，随后呈现在页面中。
+*/
+```
+
 ### 5.组件的三大属性 1——state
 
+-   理解
+
+1. state 是组件对象最重要的属性, 值是对象(可以包含多个 key-value 的组合)
+2. 组件被称为"状态机", 通过更新组件的 state 来更新对应的页面显示(重新渲染组件)
+
+-   编码操作
+
+1. 使用构造器定义 state
+
+```
+constructor(props) {
+    super(props);
+    // 初始化状态
+    this.state = { isHot: false, wind: "微风" };
+    // 解决changeWeather中this指向问题
+    this.changeWeather = this.changeWeather.bind(this);
+}
+```
+
+2. 简写 不适用构造器（常用）
+
+```
+// 初始化状态  类中通过直接赋值的形式，定义state
+state = { isHot: false, wind: "微风" };
+```
+
+3. 获取 state
+
+    可通过解构赋值从 this.state 直接获取对应属性
+
+-   强烈注意
+
+1. 组件中 render 方法中的 this 为组件实例对象
+2. 组件自定义的方法中 this 为 undefined，如何解决？
+    1. 强制绑定 this: 通过函数对象的 bind()
+    2. 箭头函数（自定义方法---要用赋值语句的形式+箭头函数）
+3. 状态数据，不能直接修改或更新，需要通过 this.setState({})修改
+
 ### 6.组件的三大属性 2——props
+
+-   理解
+
+1. 每个组件对象都会有 props(properties 的简写)属性
+2. 组件标签的所有属性都保存在 props 中
+
+-   作用
+
+1. 通过标签属性从组件外向组件内传递变化的数据
+2. 注意: 组件内部不要修改 props 数据
+
+-   编码操作
+
+1. 内部读取某个属性值
+
+    `this.props.name`
+
+2. 对 props 中的属性值进行类型限制和必要性限制
+
+-   第一种方式（React v15.5 开始已弃用）：
+
+```
+Person.propTypes = {
+    name: React.PropTypes.string.isRequired,
+    age: React.PropTypes.number
+}
+```
+
+-   第二种方式（新）：使用 prop-types 库进限制（需要引入 prop-types 库）
+
+```
+Person.propTypes = {
+    name: PropTypes.string.isRequired,
+    age: PropTypes.number
+}
+```
+
+3. 扩展属性: 将对象的所有属性通过 props 传递
+   `<Person {...person}>`
+4. 默认属性值：
+
+```
+Person.defaultProps = {
+    age: 18,
+    sex: '男'
+}
+```
+
+5. 组件类的构造函数
+
+```
+constructor(props){
+    super(props)
+    console.log(props)//打印所有属性
+}
+```
 
 ### 7.组件的三大属性 3——refs
 

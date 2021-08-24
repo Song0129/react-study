@@ -306,10 +306,10 @@ ReactDOM.render(VDOM, document.getElementById("test"));
     }
     ```
 
-```
-
 ### 11.组件的生命周期
-![组件的生命周期.png](https://gitee.com/song0129/react-study/raw/main/picture/react%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F(%E6%97%A7).png "组件的生命周期")
+
+![组件的生命周期.png](<https://gitee.com/song0129/react-study/raw/main/picture/react%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F(%E6%97%A7).png> "组件的生命周期（旧）")
+
 ### 12.DOM 的 diff 算法
 
 ### 13.复习
@@ -337,4 +337,3 @@ ReactDOM.render(VDOM, document.getElementById("test"));
 ## 四.Redux_test
 
     React中状态管理工具Redux的使用
-```

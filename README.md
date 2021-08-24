@@ -309,7 +309,7 @@ ReactDOM.render(VDOM, document.getElementById("test"));
 ```
 
 ### 11.组件的生命周期
-
+![组件的生命周期](https://gitee.com/song0129/react-study/blob/main/picture/react%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F(%E6%97%A7).png)
 ### 12.DOM 的 diff 算法
 
 ### 13.复习

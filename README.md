@@ -308,7 +308,62 @@ ReactDOM.render(VDOM, document.getElementById("test"));
 
 ### 11.组件的生命周期
 
-![组件的生命周期.png](<https://gitee.com/song0129/react-study/raw/main/picture/react%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F(%E6%97%A7).png> "组件的生命周期（旧）")
+-   理解
+    1. 组件从创建到销毁会经历一些特定的阶段。
+    2. React 组件中包含一系列钩子生命周期（生命周期回调函数），会在特定的时刻调用。
+    3. 我们在定义组件时，会在特定的生命周期回调函数中，做特定的工作。
+-   生命周期流程图(旧)
+
+![组件的生命周期(旧).png](<https://gitee.com/song0129/react-study/raw/main/picture/react%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F(%E6%97%A7).png> "组件的生命周期(旧)")
+
+-   生命周期的三个阶段(旧)：
+
+    1. 初始化阶段：有 ReactDOM.render()触发--初次渲染
+        1. constructor() 构造器触发
+        2. componentWillMount() 组件将要挂载
+        3. render() 组件挂载
+        4. componentDidMount() 组件挂载完毕
+    2. 更新阶段：由组件内部 this.setState()或父组件重新 render 触发
+        1. shouldComponentUpdate() 组件能否更新(默认可更新)
+        2. componentWillUpdate() 组件将要更新
+        3. render() 组件更新(挂载)
+        4. componentDidUpdate() 组件更新完毕
+    3. 卸载组件：由 ReactDOM.unmountComponentAtNode()触发
+        1. componentWillUnmount() 组件将要卸载
+
+-   生命周期流程图(新)
+
+![组件的生命周期(新).png](<https://gitee.com/song0129/react-study/raw/main/picture/react%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F(%E6%96%B0).png> "组件的生命周期(新)")
+
+-   生命周期的三个阶段(新)
+
+    1. 初始化阶段：由 ReactDOM.render()触发---初次渲染
+        1. constructor() 构造器触发
+        2. getDerivedStateFromProps 若组件的 state 都取决于 props 使用该函数
+        3. render() 组件挂在
+        4. componentDidMount() 组件挂载完毕
+    2. 更新阶段：由组件内部 this.setState()或父组件重新 render 触发
+        1. getDerivedStateFromProps 若组件的 state 都取决于 props 使用该函数
+        2. shouldComponentUpdate() 组件能否更新(默认可更新)
+        3. render() 组件更新
+        4. getSnapshotBeforeUpdate 更新之前获取快照
+        5. componentDidUpdate() 组件更新完毕
+    3. 卸载组件：由 ReactDOM.unmountComponentAtNode()触发
+        1. componentWilUnmount() 组件将要卸载
+
+-   重要的钩子
+
+    1. render:初始化渲染或更新渲染调用
+    2. componentDidMount:开启监听，发送 ajax 请求等
+    3. componentWillUnmount:做一些收尾工作，如：清理定时器定
+
+-   即将废弃的钩子
+
+    1. componentWillMount
+    2. componentWillReceiveProps
+    3. componentWillUpdate
+
+    现在使用会出现警告，下一个大版本需加上 UNSAFE\_前缀才能使用，以后可能会被彻底废弃，不建议使用
 
 ### 12.DOM 的 diff 算法
 

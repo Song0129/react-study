@@ -468,36 +468,36 @@ ReactDOM.render(VDOM, document.getElementById("test"));
 
 -   react 脚手架项目结构
 
--   public ---- 静态资源文件夹
+    -   public ---- 静态资源文件夹
 
-    favicon.icon ------ 网站页签图标
-    index.html -------- 主页面
-    logo192.png ------- logo 图
-    logo512.png ------- logo 图
-    manifest.json ----- 应用加壳的配置文件
-    robots.txt -------- 爬虫协议文件
+        favicon.icon ------ 网站页签图标
+        index.html -------- 主页面
+        logo192.png ------- logo 图
+        logo512.png ------- logo 图
+        manifest.json ----- 应用加壳的配置文件
+        robots.txt -------- 爬虫协议文件
 
--   src ---- 源码文件夹
+    -   src ---- 源码文件夹
 
-    App.css -------- App 组件的样式
-    App.js --------- App 组件
-    App.test.js ---- 用于给 App 做测试
-    index.css ------ 样式
-    index.js ------- 入口文件
-    logo.svg ------- logo 图
-    reportWebVitals.js --- 页面性能分析文件(需要 web-vitals 库的支持)
-    setupTests.js ---- 组件单元测试的文件(需要 jest-dom 库的支持)
+        App.css -------- App 组件的样式
+        App.js --------- App 组件
+        App.test.js ---- 用于给 App 做测试
+        index.css ------ 样式
+        index.js ------- 入口文件
+        logo.svg ------- logo 图
+        reportWebVitals.js --- 页面性能分析文件(需要 web-vitals 库的支持)
+        setupTests.js ---- 组件单元测试的文件(需要 jest-dom 库的支持)
 
--   功能界面的组件化编码流程（通用）
+    -   功能界面的组件化编码流程（通用）
 
-    1. 拆分组件: 拆分界面,抽取组件
-    2. 实现静态组件: 使用组件实现静态页面效果
-    3. 实现动态组件
-        1. 动态显示初始化数据
-            1. 数据类型
-            2. 数据名称
-            3. 保存在哪个组件?
-        2. 交互(从绑定事件监听开始)
+        1. 拆分组件: 拆分界面,抽取组件
+        2. 实现静态组件: 使用组件实现静态页面效果
+        3. 实现动态组件
+            1. 动态显示初始化数据
+                1. 数据类型
+                2. 数据名称
+                3. 保存在哪个组件?
+            2. 交互(从绑定事件监听开始)
 
 ### 2. TodoList 案例
 

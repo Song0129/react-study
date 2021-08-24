@@ -339,14 +339,14 @@ ReactDOM.render(VDOM, document.getElementById("test"));
 
     1. 初始化阶段：由 ReactDOM.render()触发---初次渲染
         1. constructor() 构造器触发
-        2. getDerivedStateFromProps 若组件的 state 都取决于 props 使用该函数
+        2. **getDerivedStateFromProps** 若组件的 state 都取决于 props 使用该函数
         3. render() 组件挂在
         4. componentDidMount() 组件挂载完毕
     2. 更新阶段：由组件内部 this.setState()或父组件重新 render 触发
-        1. getDerivedStateFromProps 若组件的 state 都取决于 props 使用该函数
+        1. **getDerivedStateFromProps** 若组件的 state 都取决于 props 使用该函数
         2. shouldComponentUpdate() 组件能否更新(默认可更新)
         3. render() 组件更新
-        4. getSnapshotBeforeUpdate 更新之前获取快照
+        4. **getSnapshotBeforeUpdate** 更新之前获取快照
         5. componentDidUpdate() 组件更新完毕
     3. 卸载组件：由 ReactDOM.unmountComponentAtNode()触发
         1. componentWilUnmount() 组件将要卸载

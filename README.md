@@ -13,25 +13,25 @@ React 学习过程中的一些笔记和小案例
     react-dom-development.js==>用于支持React操作DOM
     babel.min.js==>将jsx转为js
 
-    ```
-        <!--准备好一个容器-->
-    	<div id="test"></div>
+```
+    <!--准备好一个容器-->
+    <div id="test"></div>
 
-    	<!--引入React核心库-->
-    	<script src="../js/react.development.js"></script>
-    	<!--引入React-DOM  用于支持React操作ROM-->
-    	<script src="../js/react-dom.development.js"></script>
-    	<!--引入babel  将jsx转为js-->
-    	<script src="../js/babel.min.js"></script>
-    	<script type="text/babel">
-    		/*此处 type一定是babel*/
-    		// 1.创建虚拟DOM
-    		const VDOM = <h1>Hello,React</h1>; /*此处一定不要写引号 是虚拟dom不是字符串*/
+    <!--引入React核心库-->
+    <script src="../js/react.development.js"></script>
+    <!--引入React-DOM  用于支持React操作ROM-->
+    <script src="../js/react-dom.development.js"></script>
+    <!--引入babel  将jsx转为js-->
+    <script src="../js/babel.min.js"></script>
+    <script type="text/babel">
+        /*此处 type一定是babel*/
+        // 1.创建虚拟DOM
+        const VDOM = <h1>Hello,React</h1>; /*此处一定不要写引号 是虚拟dom不是字符串*/
 
-    		// 2.渲染虚拟DOM到页面
-    		ReactDOM.render(VDOM, document.getElementById("test"));
-    	</script>
-    ```
+        // 2.渲染虚拟DOM到页面
+        ReactDOM.render(VDOM, document.getElementById("test"));
+    </script>
+```
 
 ### 1.初识 React
 

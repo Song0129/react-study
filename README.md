@@ -282,9 +282,31 @@ ReactDOM.render(VDOM, document.getElementById("test"));
 
     1. 非受控组件
 
+        非受控组件可以理解为获取组件内容时，需要通过 ref 等方式获取
+
     2. 受控组件
 
+        受控组件可以理解为在组件内容发生变化时，通过绑定 onChange 方法将组件内容赋值给指定变量
+
 ### 10.高阶函数\_函数柯里化
+
+-   高阶函数：如果一个函数符合下面 2 个规范中的任何一个，那该函数就是高阶函数。
+    1. 若 A 函数，接收的参数是一个函数，那么 A 就可以称之为高阶函数。
+    2. 若 A 函数，调用的返回值依然是一个函数，那么 A 就可以称之为高阶函数。
+    3. 常见高阶函数：Promise、setTimeout、arr.map()等
+-   函数柯里化：通过函数调用继续返回函数的方式，实现多次接收参数最后统一处理的函数编码形式。
+
+    ```
+    function sum (a){
+        return(b)=>{
+            return(c)=>{
+                return a+b+c
+            }
+        }
+    }
+    ```
+
+```
 
 ### 11.组件的生命周期
 
@@ -315,3 +337,4 @@ ReactDOM.render(VDOM, document.getElementById("test"));
 ## 四.Redux_test
 
     React中状态管理工具Redux的使用
+```

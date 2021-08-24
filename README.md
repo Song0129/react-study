@@ -547,7 +547,7 @@ ReactDOM.render(VDOM, document.getElementById("test"));
         在 package.json 最后新增`proxy: "http://localhost:5000"`即可
         缺点：只能配置一个代理
 
-### 7. github 搜索案例
+### 3. github 搜索案例
 
 -   axios
 
@@ -555,21 +555,21 @@ ReactDOM.render(VDOM, document.getElementById("test"));
 
 -   fetch
 
-### 8. React 脚手架中路由的使用
+### 4. React 脚手架中路由的使用
 
-### 9. NavLink 相关内容
+### 5. NavLink 相关内容
 
-### 10. switch 的使用
+### 6. switch 的使用
 
-### 11. React 脚手架中解决样式丢失问题
+### 7. React 脚手架中解决样式丢失问题
 
-### 12. 路由精准匹配和模糊匹配
+### 8. 路由精准匹配和模糊匹配
 
-### 13. 路由中 Redirect 的使用
+### 9. 路由中 Redirect 的使用
 
-### 14. 嵌套路由的使用
+### 10. 嵌套路由的使用
 
-### 15. 路由组件传参方式
+### 11. 路由组件传参方式
 
 -   params 参数
 
@@ -577,19 +577,19 @@ ReactDOM.render(VDOM, document.getElementById("test"));
 
 -   state 参数
 
-### 16. push 和 replace 模式
+### 12. push 和 replace 模式
 
 -   push
 
 -   replace
 
-### 17. 编程式路由导航
+### 13. 编程式路由导航
 
-### 18. withRouter 的使用
+### 14. withRouter 的使用
 
-### 19. HashRouter 和 BrowserRouter
+### 15. HashRouter 和 BrowserRouter
 
-### 20. ant-design 的使用
+### 16. ant-design 的使用
 
 -   基本使用
 
@@ -600,7 +600,3 @@ ReactDOM.render(VDOM, document.getElementById("test"));
 ## 四.Redux_test
 
     React中状态管理工具Redux的使用
-
-```
-
-```

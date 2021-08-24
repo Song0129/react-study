@@ -939,7 +939,7 @@ ReactDOM.render(VDOM, document.getElementById("test"));
     );
     ```
 
-4. 备注：不用在组件里亲自引入样式了，即：import 'antd/dist/antd.css'应该删掉
+4. 备注：不用在组件里亲自引入样式了，即：`import 'antd/dist/antd.css'`应该删掉
 
 ## 四.Redux_test
 

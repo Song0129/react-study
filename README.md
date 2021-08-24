@@ -129,7 +129,7 @@ jsx 语法规则：
 
 -   编码操作
 
-1. 使用构造器定义 state
+    1. 使用构造器定义 state
 
     ```
     constructor(props) {

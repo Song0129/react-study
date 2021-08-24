@@ -304,6 +304,8 @@ ReactDOM.render(VDOM, document.getElementById("test"));
             }
         }
     }
+    const result = sum(1)(2)(3);
+    console.log(result)//6
     ```
 
 ### 11.组件的生命周期
@@ -413,7 +415,32 @@ ReactDOM.render(VDOM, document.getElementById("test"));
 
 1. 类的基本知识
 
+    1. 类中的构造器不是必须写的,要对实例进行一些初始化的操作,如添加指定属性时才写
+    2. 如果 A 类继承了 B 类,且 A 类中写了构造器,那么 A 类构造器中的 super 是必须要调用的
+    3. 类中所定义的方法,都放在了类的原型对象中,供实例去使用
+
 2. 原生事件绑定
+
+    ```
+    <button id="btn1">按钮1</button>
+    <button id="btn2">按钮2</button>
+    <button onclick="demo()">按钮3</button>
+    <script type="text/javascript">
+        const btn1 = document.getElementById("btn1");
+        btn1.addEventListener("click", () => {
+            alert("按钮1被点击了");
+        });
+
+        const btn2 = document.getElementById("btn2");
+        btn2.onclick = () => {
+            alert("按钮2被点击了");
+        };
+
+        function demo() {
+            alert("按钮3被点击了");
+        }
+    </script>
+    ```
 
 3. 类方法中的 this 指向
 

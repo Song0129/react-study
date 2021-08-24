@@ -24,12 +24,12 @@
 
 				death = () => {
 					// 卸载组件
-					ReactDOM.unmountComponentAtNode(document.getElementById('test'));
+					ReactDOM.unmountComponentAtNode(document.getElementById("test"));
 				};
 
 				// 组件挂在完毕时  组件挂载页面之后调用
 				componentDidMount() {
-					console.log('componentDidMount');
+					console.log("componentDidMount");
 					this.timer = setInterval(() => {
 						// 获取原状态
 						let { opacity } = this.state;
@@ -44,14 +44,14 @@
 
 				// 组件将要卸载
 				componentWillUnmount() {
-					console.log('componentWillUnmount');
+					console.log("componentWillUnmount");
 					// 清除定时器
 					clearInterval(this.timer);
 				}
 
 				// render调用的时机：初始化渲染，状态更新之后
 				render() {
-					console.log('render');
+					console.log("render");
 					return (
 						<div>
 							<h2 style={{ opacity: this.state.opacity }}>React学不会怎么办</h2>
@@ -61,7 +61,7 @@
 				}
 			}
 			// 渲染组件
-			ReactDOM.render(<Life />, document.getElementById('test'));
+			ReactDOM.render(<Life />, document.getElementById("test"));
 		</script>
 	</body>
 </html>

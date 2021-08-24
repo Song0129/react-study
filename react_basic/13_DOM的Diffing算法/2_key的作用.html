@@ -92,14 +92,14 @@
 			class Person extends React.Component {
 				state = {
 					persons: [
-						{ id: 1, name: '小张', age: 18 },
-						{ id: 2, name: '小李', age: 19 },
+						{ id: 1, name: "小张", age: 18 },
+						{ id: 2, name: "小李", age: 19 },
 					],
 				};
 
 				add = () => {
 					const { persons } = this.state;
-					const p = { id: persons.length + 1, name: '小王', age: 20 };
+					const p = { id: persons.length + 1, name: "小王", age: 20 };
 					this.setState({ persons: [p, ...persons] });
 				};
 
@@ -135,7 +135,7 @@
 					);
 				}
 			}
-			ReactDOM.render(<Person />, document.getElementById('test'));
+			ReactDOM.render(<Person />, document.getElementById("test"));
 		</script>
 	</body>
 </html>

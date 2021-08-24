@@ -1,50 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <title>jsx语法规则</title>
-    <style>
-      .title {
-        width: 200px;
-        background: blue;
-      }
-    </style>
-  </head>
-  <body>
-    <!--准备好一个容器-->
-    <div id="test"></div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<title>jsx语法规则</title>
+		<style>
+			.title {
+				width: 200px;
+				background: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<!--准备好一个容器-->
+		<div id="test"></div>
 
-    <!--引入React和核心库-->
-    <script src="../js/react.development.js"></script>
-    <!--引入React-DOM  用于支持React操作ROM-->
-    <script src="../js/react-dom.development.js"></script>
-    <!--引入babel  将jsx转为js-->
-    <script src="../js/babel.min.js"></script>
-    <script type="text/babel">
-      /*此处 type一定是babel*/
-      const myId = 'boxA';
-      const myData = 'Hello,React';
-      // 1.创建虚拟DOM
-      const VDOM = (
-        <div>
-          <h1 className="title" id={myId.toLowerCase()}>
-            <span style={{ color: 'white', lineHeight: '50px' }}>{myData}</span>
-          </h1>
-          <h1 className="title" id={myId.toUpperCase() + 1}>
-            <span style={{ color: 'white', lineHeight: '50px' }}>{myData}</span>
-          </h1>
-          <label>
-            <input type="text" />
-          </label>
-        </div>
-      ); /*此处一定不要写引号 是虚拟dom不是字符串*/
+		<!--引入React核心库-->
+		<script src="../js/react.development.js"></script>
+		<!--引入React-DOM  用于支持React操作ROM-->
+		<script src="../js/react-dom.development.js"></script>
+		<!--引入babel  将jsx转为js-->
+		<script src="../js/babel.min.js"></script>
+		<script type="text/babel">
+			/*此处 type一定是babel*/
+			const myId = "boxA";
+			const myData = "Hello,React";
+			// 1.创建虚拟DOM
+			const VDOM = (
+				<div>
+					<h1 className="title" id={myId.toLowerCase()}>
+						<span style={{ color: "white", lineHeight: "50px" }}>{myData}</span>
+					</h1>
+					<h1 className="title" id={myId.toUpperCase() + 1}>
+						<span style={{ color: "white", lineHeight: "50px" }}>{myData}</span>
+					</h1>
+					<label>
+						<input type="text" />
+					</label>
+				</div>
+			); /*此处一定不要写引号 是虚拟dom不是字符串*/
 
-      // 2.渲染虚拟DOM到页面
-      ReactDOM.render(VDOM, document.getElementById('test'));
+			// 2.渲染虚拟DOM到页面
+			ReactDOM.render(VDOM, document.getElementById("test"));
 
-      /*
+			/*
         jsx语法规则：
           1.定义虚拟DOM时，不要写引号
           2.标签中混入js表达式时要用{}
@@ -58,6 +58,6 @@
             (1).若小写字母开头，则将该标签转为html中同名元素，若html无该标签对应的同名元素，则报错
             (2).若大写字母开头，react就去渲染对应的组件，若组件没有定义，则报错
       */
-    </script>
-  </body>
+		</script>
+	</body>
 </html>

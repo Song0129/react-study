@@ -36,7 +36,7 @@
 
                 */
 				constructor(props) {
-					console.log('Count---constructor');
+					console.log("Count---constructor");
 					super(props);
 					// 初始化状态
 					this.state = { count: 0 };
@@ -51,7 +51,7 @@
 
 				// 卸载组件回调
 				death = () => {
-					ReactDOM.unmountComponentAtNode(document.getElementById('test'));
+					ReactDOM.unmountComponentAtNode(document.getElementById("test"));
 				};
 
 				// 强制更新回调
@@ -61,37 +61,37 @@
 
 				// 组件将要挂在的钩子
 				componentWillMount() {
-					console.log('Count---componentWillMount');
+					console.log("Count---componentWillMount");
 				}
 
 				// 组件挂在完毕的钩子
 				componentDidMount() {
-					console.log('Count---componentDidMount');
+					console.log("Count---componentDidMount");
 				}
 
 				// 组件将要卸载的钩子
 				componentWillUnmount() {
-					console.log('Count---componetWillUnmount');
+					console.log("Count---componetWillUnmount");
 				}
 
 				// 控制组件更新的“阀门”
 				shouldComponentUpdate() {
-					console.log('Count---shouldComonentUpdate');
+					console.log("Count---shouldComonentUpdate");
 					return true;
 				}
 
 				// 组件将要更新的钩子
 				componentWillUpdate() {
-					console.log('Count---componentWillUpdate');
+					console.log("Count---componentWillUpdate");
 				}
 
 				// 组件更新完毕的钩子
 				componentDidUpdate() {
-					console.log('Count---componentDidUpdate');
+					console.log("Count---componentDidUpdate");
 				}
 
 				render() {
-					console.log('Count---render');
+					console.log("Count---render");
 					const { count } = this.state;
 					return (
 						<div>
@@ -106,10 +106,10 @@
 
 			class A extends React.Component {
 				// 初始化状态
-				state = { carName: '奔驰' };
+				state = { carName: "奔驰" };
 
 				changeCar = () => {
-					this.setState({ carName: '奥迪' });
+					this.setState({ carName: "奥迪" });
 				};
 
 				render() {
@@ -127,27 +127,27 @@
 				// 组件将要接收新的props的钩子
 				componentWillReceiveProps(props) {
 					// 第一次传的props不算  接收新的props时才会触发该钩子
-					console.log('B---componentWillReceiveProps', props);
+					console.log("B---componentWillReceiveProps", props);
 				}
 
 				// 控制组件更新的“阀门”
 				shouldComponentUpdate() {
-					console.log('B---shouldComponentUpdate');
+					console.log("B---shouldComponentUpdate");
 					return true;
 				}
 
 				// 组件将要更新的钩子
 				componentWillUpdate() {
-					console.log('B---componentWillUpdate');
+					console.log("B---componentWillUpdate");
 				}
 
 				// 组件更新完毕的钩子
 				componentDidUpdate() {
-					console.log('B---componentDidUpdate');
+					console.log("B---componentDidUpdate");
 				}
 
 				render() {
-					console.log('B---render');
+					console.log("B---render");
 					return (
 						<div>
 							<div>我是B组件，接收到的车是：{this.props.carName}</div>
@@ -157,7 +157,7 @@
 			}
 
 			// 渲染组件
-			ReactDOM.render(<A />, document.getElementById('test'));
+			ReactDOM.render(<A />, document.getElementById("test"));
 		</script>
 	</body>
 </html>

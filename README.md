@@ -14,19 +14,19 @@ React 学习过程中的一些笔记和小案例
     babel.min.js==>将jsx转为js
 
 ```
-    <!--准备好一个容器-->
-    <div id="test"></div>
+<!--准备好一个容器-->
+<div id="test"></div>
 
-    <!--引入React核心库-->
-    <script src="../js/react.development.js"></script>
-    <!--引入React-DOM  用于支持React操作ROM-->
-    <script src="../js/react-dom.development.js"></script>
-    <!--引入babel  将jsx转为js-->
-    <script src="../js/babel.min.js"></script>
-    <script type="text/babel">
-        /*此处 type一定是babel*/
-        // jsx内容
-    </script>
+<!--引入React核心库-->
+<script src="../js/react.development.js"></script>
+<!--引入React-DOM  用于支持React操作ROM-->
+<script src="../js/react-dom.development.js"></script>
+<!--引入babel  将jsx转为js-->
+<script src="../js/babel.min.js"></script>
+<script type="text/babel">
+    /*此处 type一定是babel*/
+    // jsx内容
+</script>
 ```
 
 ### 1.初识 React
@@ -34,11 +34,11 @@ React 学习过程中的一些笔记和小案例
     初次使用React在页面显示Hello React
 
 ```
-    // 1.创建虚拟DOM
-    const VDOM = <h1>Hello,React</h1>; /*此处一定不要写引号 是虚拟dom不是字符串*/
+// 1.创建虚拟DOM
+const VDOM = <h1>Hello,React</h1>; /*此处一定不要写引号 是虚拟dom不是字符串*/
 
-    // 2.渲染虚拟DOM到页面
-    ReactDOM.render(VDOM, document.getElementById("test"));
+// 2.渲染虚拟DOM到页面
+ReactDOM.render(VDOM, document.getElementById("test"));
 ```
 
 ### 2.虚拟 DOM
@@ -46,17 +46,17 @@ React 学习过程中的一些笔记和小案例
 -   使用 jsx 创建虚拟 DOM
 
 ```
-    const VDOM = (
-        <h1>
-            <span>Hello,React</span>
-        </h1>
-    )
+const VDOM = (
+    <h1>
+        <span>Hello,React</span>
+    </h1>
+)
 ```
 
 -   使用 js 创建虚拟 DOM
 
 ```
-        const VDOM = React.createElement("h1", { id: "title" }, React.createElement("span", {}, "hello,react"));
+const VDOM = React.createElement("h1", { id: "title" }, React.createElement("span", {}, "hello,react"));
 ```
 
 ### 3.jsx 语法规则

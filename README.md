@@ -61,8 +61,6 @@ ReactDOM.render(VDOM, document.getElementById("test"));
 
 ### 3.jsx 语法规则
 
-jsx 语法规则：
-
 -   定义虚拟 DOM 时，不要写引号
 -   标签中混入 js 表达式时要用{}
 -   样式的类型指定不要用 class，要用 className

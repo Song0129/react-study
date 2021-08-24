@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button, Select } from "antd";
 
 import store from "../../redux/store";
-import { createIncrmentAction, createDecrmentAction } from "../../redux/count_action";
+import { createIncrementAction, createDecrementAction, createIncrementAsyncAction } from "../../redux/count_action";
 
 const { Option } = Select;
 
@@ -28,7 +28,7 @@ export default class Count extends Component {
 		const { value } = this.state;
 		// this.setState({ count: count + value * 1 });
 		// store.dispatch({ type: "increment", data: value * 1 });
-		store.dispatch(createIncrmentAction(value * 1));
+		store.dispatch(createIncrementAction(value * 1));
 	};
 
 	// 减法
@@ -36,7 +36,7 @@ export default class Count extends Component {
 		const { value } = this.state;
 		// this.setState({ count: count - value * 1 });
 		// store.dispatch({ type: "decrement", data: value * 1 });
-		store.dispatch(createDecrmentAction(value * 1));
+		store.dispatch(createDecrementAction(value * 1));
 	};
 
 	// 奇数再加
@@ -46,18 +46,20 @@ export default class Count extends Component {
 		if (count % 2 !== 0) {
 			// this.setState({ count: count + value * 1 });
 			// store.dispatch({ type: "increment", data: value * 1 });
-			store.dispatch(createIncrmentAction(value * 1));
+			store.dispatch(createIncrementAction(value * 1));
 		}
 	};
 
 	// 异步加
 	incrementAsync = () => {
 		const { value } = this.state;
-		setTimeout(() => {
-			// this.setState({ count: count + value * 1 });
-			// store.dispatch({ type: "increment", data: value * 1 });
-			store.dispatch(createIncrmentAction(value * 1));
-		}, 200);
+		// setTimeout(() => {
+		// 	// this.setState({ count: count + value * 1 });
+		// 	// store.dispatch({ type: "increment", data: value * 1 });
+		// 	store.dispatch(createIncrementAction(value * 1));
+		// }, 200);
+
+		store.dispatch(createIncrementAsyncAction(value * 1), 500);
 	};
 
 	render() {

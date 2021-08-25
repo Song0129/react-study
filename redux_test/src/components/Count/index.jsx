@@ -59,7 +59,7 @@ export default class Count extends Component {
 		// 	store.dispatch(createIncrementAction(value * 1));
 		// }, 200);
 
-		store.dispatch(createIncrementAsyncAction(value * 1), 500);
+		store.dispatch(createIncrementAsyncAction(value * 1, 500));
 	};
 
 	render() {

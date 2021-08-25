@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import Count from "./components/Count";
-
-// import { Button } from "antd";
+import Count from "./containers/Count";
+import store from "./redux/store";
 
 export default class App extends Component {
 	render() {
 		return (
 			<div className="box">
-				<Count />
+				{/* 给容器组件传递store */}
+				<Count store={store} />
 			</div>
 		);
 	}

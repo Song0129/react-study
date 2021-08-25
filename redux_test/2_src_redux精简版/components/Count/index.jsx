@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, Select } from "antd";
-
+// 引入store 用于获取redux中保存状态
 import store from "../../redux/store";
 
 const { Option } = Select;

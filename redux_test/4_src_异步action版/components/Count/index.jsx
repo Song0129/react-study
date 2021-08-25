@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Button, Select } from "antd";
-
+// 引入store 用于获取redux中保存状态
 import store from "../../redux/store";
+// 引入actionCreator 专门用于创建action对象
 import { createIncrementAction, createDecrementAction, createIncrementAsyncAction } from "../../redux/count_action";
 
 const { Option } = Select;

@@ -32,7 +32,7 @@ class Person extends Component {
 	render() {
 		return (
 			<div>
-				<h2>我是Person组件，上面组件的和为{this.props.count}</h2>
+				<h2>我是Person组件，上面组件的和为{this.props.he}</h2>
 				<Input
 					onChange={(e) => {
 						this.handleChange(e, "name");
@@ -58,7 +58,7 @@ class Person extends Component {
 					删除
 				</Button>
 				<ul>
-					{this.props.persons.map((personObj) => {
+					{this.props.yiduiren.map((personObj) => {
 						return (
 							<li key={personObj.id}>
 								{personObj.name}---{personObj.age}
@@ -73,8 +73,8 @@ class Person extends Component {
 
 export default connect(
 	(state) => ({
-		persons: state.persons,
-		count: state.count,
+		yiduiren: state.rens,
+		he: state.he,
 	}),
 	{
 		jiayiren: createAddPersonAction,

@@ -77,7 +77,7 @@ class Count extends Component {
 }
 
 // 使用connect()()创建并暴露一个Count的容器组件
-export default connect((state) => ({ count: state.count, personCount: state.persons.length }), {
+export default connect((state) => ({ count: state.he, renshu: state.rens.length }), {
 	jia: createIncrementAction,
 	jian: createDecrementAction,
 	jiaAsync: createIncrementAsyncAction,

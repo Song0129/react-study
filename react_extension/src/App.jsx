@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import Demo from "./components/2_lazyLoad";
+import Demo from "./components/3_hooks";
 
 export default class App extends Component {
 	render() {

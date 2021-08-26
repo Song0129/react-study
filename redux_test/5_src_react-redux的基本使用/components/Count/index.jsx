@@ -36,7 +36,7 @@ export default class Count extends Component {
 	// 异步加
 	incrementAsync = () => {
 		const { value } = this.state;
-		this.props.jianAsync(value, 500);
+		this.props.jiaAsync(value, 500);
 	};
 
 	render() {

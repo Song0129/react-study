@@ -14,7 +14,7 @@ export default connect(
 	// 	jian: (number) => {
 	// 		dispatch(createDecrementAction(number));
 	// 	},
-	// 	jianAsync: (number, time) => {
+	// 	jiaAsync: (number, time) => {
 	// 		dispatch(createIncrementAsyncAction(number, time));
 	// 	},
 	// })

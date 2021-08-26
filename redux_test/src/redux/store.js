@@ -6,13 +6,15 @@
 import { createStore, applyMiddleware, combineReducers } from "redux";
 // 引入为Count组件服务的reducer
 import countReducer from "./reducers/count";
+// 引入为Person组件服务的reducer
 import personReducer from "./reducers/person";
 // 引入redux-thunk  用于支持异步action
 import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 const allReducers = combineReducers({
 	he: countReducer,
 	rens: personReducer,
 });
 // 暴露store
-export default createStore(allReducers, applyMiddleware(thunk));
+export default createStore(allReducers, composeWithDevTools(applyMiddleware(thunk)));

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button, Select } from "antd";
 
 // 引入action
-import { increment, decrement, incrementAsync } from "../../redux/actions/count";
+import { createIncrementAction, createDecrementAction, createIncrementAsyncAction } from "../../redux/actions/count";
 // 引入connect用于连接UI组件和redux
 import { connect } from "react-redux";
 
@@ -21,27 +21,27 @@ class Count extends Component {
 	// 加法
 	increment = () => {
 		const { value } = this.state;
-		this.props.increment(value * 1);
+		this.props.jia(value * 1);
 	};
 
 	// 减法
 	dencrement = () => {
 		const { value } = this.state;
-		this.props.decrement(value * 1);
+		this.props.jian(value * 1);
 	};
 
 	// 奇数再加
 	incrementIfOdd = () => {
 		const { value } = this.state;
 		if (this.props.count % 2 !== 0) {
-			this.props.increment(value);
+			this.props.jia(value);
 		}
 	};
 
 	// 异步加
 	incrementAsync = () => {
 		const { value } = this.state;
-		this.props.incrementAsync(value, 500);
+		this.props.jiaAsync(value, 500);
 	};
 
 	render() {
@@ -77,14 +77,8 @@ class Count extends Component {
 }
 
 // 使用connect()()创建并暴露一个Count的容器组件
-export default connect(
-	(state) => ({
-		count: state.count,
-		personCount: state.persons.length,
-	}),
-	{
-		increment,
-		decrement,
-		incrementAsync,
-	}
-)(Count);
+export default connect((state) => ({ count: state.he, renshu: state.rens.length }), {
+	jia: createIncrementAction,
+	jian: createDecrementAction,
+	jiaAsync: createIncrementAsyncAction,
+})(Count);

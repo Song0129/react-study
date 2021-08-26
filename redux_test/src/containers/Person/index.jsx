@@ -3,7 +3,7 @@ import { Input, Button } from "antd";
 import { nanoid } from "nanoid";
 
 import { connect } from "react-redux";
-import { createAddPersonAction } from "../../redux/actions/person";
+import { createAddPersonAction, createDelPersonAction } from "../../redux/actions/person";
 
 class Person extends Component {
 	state = {
@@ -18,8 +18,15 @@ class Person extends Component {
 
 	addPerson = () => {
 		const { name, age } = this.state;
-		const personObj = { id: nanoid(), name, age };
+		const personObj = { id: nanoid(), name, age: age * 1 };
 		this.props.jiayiren(personObj);
+		this.setState({ name: "", age: "" });
+	};
+
+	delPerson = () => {
+		const { name, age } = this.state;
+		const personObj = { id: nanoid(), name, age: age * 1 };
+		this.props.shanyiren(personObj);
 		this.setState({ name: "", age: "" });
 	};
 	render() {
@@ -47,6 +54,9 @@ class Person extends Component {
 				<Button onClick={this.addPerson} type="primary">
 					添加
 				</Button>
+				<Button onClick={this.delPerson} type="primary">
+					删除
+				</Button>
 				<ul>
 					{this.props.yiduiren.map((personObj) => {
 						return (
@@ -61,4 +71,13 @@ class Person extends Component {
 	}
 }
 
-export default connect((state) => ({ yiduiren: state.rens, he: state.he }), { jiayiren: createAddPersonAction })(Person);
+export default connect(
+	(state) => ({
+		yiduiren: state.rens,
+		he: state.he,
+	}),
+	{
+		jiayiren: createAddPersonAction,
+		shanyiren: createDelPersonAction,
+	}
+)(Person);

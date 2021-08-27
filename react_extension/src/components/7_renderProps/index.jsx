@@ -18,7 +18,6 @@ class A extends Component {
 	};
 	render() {
 		console.log(this.props);
-		const { name } = this.state;
 		return (
 			<div className="a">
 				<h2>我是A组件</h2>

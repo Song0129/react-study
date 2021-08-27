@@ -141,7 +141,7 @@
             addLessLoader({
                 lessOptions:{
                     javascriptEnabled: true,
-                    modifyVars: { '@primary-color': 'green' },
+                    modifyVars: { '@primary-color': '#1DA57A' },
                 }
             }),
         );
